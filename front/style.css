@@ -1,0 +1,33 @@
+/* Estilo web */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* estiloo header */
+.header {
+    background: #509cec; 
+    color: rgb(255, 255, 255);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nombre{
+    font-size: 20px;
+}
+nav a{
+    color: rgb(0, 0, 0);
+    margin-left: 18px;
+    padding: 8px 12px;
+    font-size: 15px;
+    text-decoration: none;
+    opacity: 0.85;
+}
+nav a:hover{
+    background: #80adf5;
+    color: #000000;
+    text-decoration: underline;
+    opacity: 1;
+    border-radius: 20px;
+}
