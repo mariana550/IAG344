@@ -1,0 +1,4 @@
+openpyxl
+pytest
+pyinstaller
+pyinstaller
