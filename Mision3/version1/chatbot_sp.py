@@ -2,6 +2,7 @@
 # =================================================
 # LIBRERIAS 
 # =================================================
+from xml.parsers.expat import model
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 # =================================================
@@ -13,7 +14,6 @@ def build_and_train_model(train_pairs):
     # Separamos las preguntas y respuestas
     questions = [q for q, _ in train_pairs] # lista de preguntas
     answers = [a for _, a in train_pairs] # lista de respuestas
-
     # Creamos el vectorizado, que traducira el texto a numeros 
     vectorizer=CountVectorizer()
     # Entrenamiento
@@ -54,6 +54,18 @@ if __name__ == "__main__":
         ("Gracias", "Con mucho gusto. Estoy aquí para servirte."),
         ("Adiós", "Gracias por contactarnos. Que tengas un excelente día.")
     ]
+    # Entrenar el modelo con la lista 
+    model,vectorizer,unique_answers = build_and_train_model(training_data)
+    # Mostrar un mensaje inicial al usuario
+    print("Chatbot supervisado listo,Escribe Salir para terminar. \n")
+    while True:
+        # Pedimos una frase al usuario
+        user = input("Tú: ").strip()
+        if user.lower() in{"salir","exit","quit"}:
+            print("Bot: !Hasta pronto¡")
+            break
+        response = predict_answer(model,vectorizer,unique_answers,user)
+        print("Bot:",response)
 
 
 
